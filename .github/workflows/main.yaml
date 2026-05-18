@@ -1,9 +1,10 @@
 name: my-first-workflow
 on:
   push:
-    - dev
-    - 'feature-*'
-    - main
+    branches:
+      - dev
+      - 'feature-*'
+      - main
 
 jobs:
   job1:
