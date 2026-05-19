@@ -1,9 +1,5 @@
 name: my-first-workflow
 on:
-  push:
-    branches:
-      - main
-      - dev
   pull_request:
     branches:
       - main
@@ -70,25 +66,3 @@ jobs:
           echo "[INFO] New changed are added by ${{ github.actor }} in ${{ github.head_ref }}"
           echo "[INFO] Current Step is running on ${{ runner.os }}"
           echo "[INFO] Current JOB ID is ${{ job.check_run_id }}"
-  staging:
-    name: STAGE DEPLOYMENT
-    runs-on: ubuntu-latest
-    steps:
-      - name: Referring environment variables
-        run: echo "[INFO] Running deployment on ${{ vars.HOST }} using ${{ vars.USER}}"
-      - name: Referring environment secrets
-        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}"
-    environment:
-      name: STAGING
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-  pruduction:
-    name: PROD DEPLOYMENT
-    runs-on: ubuntu-latest
-    steps:
-      - name: Referring environment variables
-        run: echo "[INFO] Running deployment on ${{ vars.HOST }} using ${{ vars.USER}}"
-      - name: Referring environment secrets
-        run: echo "[INFO] Password for ${{ vars.USER}} is ${{ secrets.PASSWORD }}"
-    environment:
-      name: PRODUCTION
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
