@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
@@ -76,7 +77,7 @@ jobs:
       - name: Referring environment variables
         run: echo "[INFO] Running deployment on ${{ vars.HOST }} using ${{ vars.USER}}"
       - name: Referring environment secrets
-        run: echo "[INFO] Password for ${{ vars.USER}} is ${{ secrets.PASSWORD }}"
+        run: echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}"
     environment:
       name: STAGING
     if: github.head_ref == 'dev'
