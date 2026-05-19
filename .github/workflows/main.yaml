@@ -59,3 +59,13 @@ jobs:
           echo "[INFO] Application password is ${{ secrets.APP_PASSWORD }}"
       - name: Step for PR Demos
         run: exit 0
+  job3:
+    name: JOB3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Referring context on in-built variables
+        run: |
+          echo "[INFO] Triggered by ${{ github.event_name }}"
+          echo "[INFO] New changed are added by ${{ github.actor }} in ${{ github.ref_name }}"
+          echo "[INFO] Current Step is running on ${{ runner.os }}"
+          echo "[INFO] Current JOB ID is ${{ job.check_run_id }}"
